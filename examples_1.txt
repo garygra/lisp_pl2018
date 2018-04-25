@@ -1,0 +1,72 @@
+;-----------------------------------------------------------------
+; EXAMPLES 
+;-----------------------------------------------------------------
+;Just open terminal and type: SBCL
+;The "*" is the prompt symbol for SBCL: user code goes after that
+;Every line that doesnt have ";" (semicolon) will be evaluated by SBCL
+;If there is indentention, it means the list above continues
+;-----------------------------------------------------------------
+;Basic Syntax
+;-----------------------------------------------------------------
+; this is a comment
+;;; Atoms:
+2018
++
+*
+;;; Lists:
+'(Just a simple list)
+(+ 1 2 3) ; <== Also a Function!
+
+;-----------------------------------------------------------------
+;NIL, T, Numbers and more...
+;-----------------------------------------------------------------
+;;; Nil:
+Nil
+'()
+;;; t:
+t
+;;; function factorial
+(defun fact (n)
+	(if (= n 0)
+		1
+		(* n (fact (- n 1 )))))
+;;; More functions!
+(/ (fact 5) (+ 2 (fact 4)))
+(realpart (* (sqrt -1) (sqrt -1)))
+(print "printing a string")
+(print '(another simple list) )
+
+
+;-----------------------------------------------------------------
+;Functions
+;-----------------------------------------------------------------
+;;; A weird function
+(defun foo (foo)
+	(print foo) )
+(defvar foo)
+(setq foo ”foo”)
+(foo foo)
+;;; Another function... what it does?
+(defun bar (l)
+	(if (null (car l))
+		0
+		(+ 1 (bar (cdr l)))
+	)
+)
+(bar ’(a b c d e))
+
+;-----------------------------------------------------------------
+;Macros
+;-----------------------------------------------------------------
+;;; A simple macro
+defmacro when-m (test body)
+	‘(if ,test
+		,body
+		nil ))
+
+;-----------------------------------------------------------------
+;Debugger
+;-----------------------------------------------------------------
+;;; The following line will launch the Debugger
+(+ a 4)
+; After the debugger launches, try to use the four options.
